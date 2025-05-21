@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -11,6 +12,8 @@ import { toast } from '@/components/ui/use-toast';
 import { useAuth } from '@/contexts/AuthContext';
 import { Product } from '@/components/ProductCard';
 import { useNotifications } from '@/hooks/useNotifications';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { hanoiDistricts, District, Ward } from '@/data/hanoi-districts';
 
 interface CartItem extends Product {
   quantity: number;
@@ -48,12 +51,15 @@ const Checkout = () => {
     fullName: '',
     phone: '',
     address: '',
-    city: '',
+    city: 'Hà Nội', // Default to Hanoi
     district: '',
     ward: '',
     note: '',
     paymentMethod: 'cod'
   });
+  
+  const [availableWards, setAvailableWards] = useState<Ward[]>([]);
+  const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
   
   // Load cart items from localStorage
   useEffect(() => {
@@ -95,7 +101,8 @@ const Checkout = () => {
     if (currentUser) {
       setOrderDetails(prev => ({
         ...prev,
-        fullName: currentUser.name
+        fullName: currentUser.name,
+        city: 'Hà Nội' // Default to Hanoi
       }));
     }
   }, [isAuthenticated, navigate, currentUser]);
@@ -106,6 +113,29 @@ const Checkout = () => {
       ...prev,
       [name]: value
     }));
+  };
+  
+  const handleDistrictChange = (value: string) => {
+    const district = hanoiDistricts.find(d => d.id === value);
+    if (district) {
+      setSelectedDistrict(district);
+      setAvailableWards(district.wards);
+      setOrderDetails(prev => ({
+        ...prev,
+        district: district.name,
+        ward: '' // Reset ward when district changes
+      }));
+    }
+  };
+  
+  const handleWardChange = (value: string) => {
+    const ward = availableWards.find(w => w.id === value);
+    if (ward) {
+      setOrderDetails(prev => ({
+        ...prev,
+        ward: ward.name
+      }));
+    }
   };
   
   const handlePaymentMethodChange = (value: string) => {
@@ -268,36 +298,49 @@ const Checkout = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="city">Tỉnh/Thành phố <span className="text-red-500">*</span></Label>
+                  <Label htmlFor="city">Tỉnh/Thành phố</Label>
                   <Input
                     id="city"
                     name="city"
                     value={orderDetails.city}
-                    onChange={handleInputChange}
-                    placeholder="Hà Nội"
+                    disabled
+                    className="bg-gray-100"
                   />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="district">Quận/Huyện <span className="text-red-500">*</span></Label>
-                  <Input
-                    id="district"
-                    name="district"
-                    value={orderDetails.district}
-                    onChange={handleInputChange}
-                    placeholder="Cầu Giấy"
-                  />
+                  <Select onValueChange={handleDistrictChange}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Chọn quận/huyện" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {hanoiDistricts.map((district) => (
+                        <SelectItem key={district.id} value={district.id}>
+                          {district.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="ward">Phường/Xã <span className="text-red-500">*</span></Label>
-                  <Input
-                    id="ward"
-                    name="ward"
-                    value={orderDetails.ward}
-                    onChange={handleInputChange}
-                    placeholder="Dịch Vọng"
-                  />
+                  <Select 
+                    onValueChange={handleWardChange} 
+                    disabled={!selectedDistrict}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Chọn phường/xã" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {availableWards.map((ward) => (
+                        <SelectItem key={ward.id} value={ward.id}>
+                          {ward.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 
                 <div className="md:col-span-2 space-y-2">
