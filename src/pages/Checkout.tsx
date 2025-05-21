@@ -79,7 +79,7 @@ const Checkout = () => {
       return;
     }
     
-    setSelectedItems(selected);
+    setSelectedItems(selected as CartItem[]);
     
     // Pre-fill user information if available
     if (currentUser) {
