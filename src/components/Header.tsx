@@ -95,14 +95,7 @@ const Header: React.FC = () => {
               >
                 Trang chủ
               </Link>
-              <Link
-                to="/products"
-                className={`text-sm font-medium ${
-                  isActive('/products') ? 'text-greenfresh-600' : 'text-gray-600 hover:text-greenfresh-500'
-                }`}
-              >
-                Sản phẩm
-              </Link>
+              
               <Link
                 to="/chat"
                 className={`text-sm font-medium ${
@@ -188,12 +181,7 @@ const Header: React.FC = () => {
                     </>
                   )}
                   
-                  <DropdownMenuItem asChild>
-                    <Link to="/profile" className="flex items-center cursor-pointer">
-                      <User className="mr-2 h-4 w-4" />
-                      <span>Tài khoản</span>
-                    </Link>
-                  </DropdownMenuItem>
+                
                   
                   <DropdownMenuItem asChild>
                     <Link to="/settings" className="flex items-center cursor-pointer">
@@ -235,15 +223,7 @@ const Header: React.FC = () => {
             >
               Trang chủ
             </Link>
-            <Link
-              to="/products"
-              className={`px-3 py-2 rounded-md ${
-                isActive('/products') ? 'bg-greenfresh-50 text-greenfresh-600' : 'text-gray-600 hover:bg-gray-50'
-              }`}
-              onClick={toggleMenu}
-            >
-              Sản phẩm
-            </Link>
+            
             <Link
               to="/chat"
               className={`px-3 py-2 rounded-md ${
