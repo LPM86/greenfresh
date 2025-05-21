@@ -5,109 +5,50 @@ import { format } from 'date-fns';
 import { vi } from 'date-fns/locale';
 import { 
   ShoppingBag, Bell, Tag, AlertTriangle, 
-  Check, Trash2
+  Check, Trash2, FileText
 } from 'lucide-react';
 import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
-
-interface Notification {
-  id: number;
-  type: 'order' | 'promotion' | 'product' | 'system';
-  title: string;
-  message: string;
-  isRead: boolean;
-  createdAt: string;
-}
+import { useNotifications } from '@/hooks/useNotifications';
 
 const Notifications = () => {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const { notifications, markAsRead, markAllAsRead, unreadCount } = useNotifications();
   const [filter, setFilter] = useState<string>('all');
-
-  useEffect(() => {
-    // Load notifications from localStorage
-    const storedNotifications = localStorage.getItem('greenfresh-notifications');
-    if (storedNotifications) {
-      setNotifications(JSON.parse(storedNotifications));
-    } else {
-      // Sample notifications
-      const sampleNotifications: Notification[] = [
-        {
-          id: 1,
-          type: 'promotion',
-          title: 'Giảm giá 20% cho rau organic',
-          message: 'Áp dụng mã FRESH20 để được giảm 20% cho đơn hàng từ 200.000đ.',
-          isRead: false,
-          createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
-        },
-        {
-          id: 2,
-          type: 'product',
-          title: 'Rau mới về kho',
-          message: 'Rau xanh hữu cơ mới về kho! Đặt hàng ngay để được giao hàng nhanh nhất.',
-          isRead: true,
-          createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
-        },
-        {
-          id: 3,
-          type: 'system',
-          title: 'Cập nhật chính sách giao hàng',
-          message: 'GreenFresh cập nhật chính sách giao hàng miễn phí cho đơn từ 100.000đ.',
-          isRead: false,
-          createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
-        }
-      ];
-      setNotifications(sampleNotifications);
-      localStorage.setItem('greenfresh-notifications', JSON.stringify(sampleNotifications));
-    }
-  }, []);
-
-  // Save notifications to localStorage when they change
-  useEffect(() => {
-    localStorage.setItem('greenfresh-notifications', JSON.stringify(notifications));
-  }, [notifications]);
 
   // Filter notifications
   const filteredNotifications = filter === 'all' 
     ? notifications 
     : notifications.filter(n => n.type === filter);
 
-  // Mark notification as read
-  const markAsRead = (id: number) => {
-    const updatedNotifications = notifications.map(n => 
-      n.id === id ? { ...n, isRead: true } : n
-    );
-    setNotifications(updatedNotifications);
-  };
-
-  // Mark all as read
-  const markAllAsRead = () => {
-    const updatedNotifications = notifications.map(n => ({ ...n, isRead: true }));
-    setNotifications(updatedNotifications);
-    toast({
-      title: "Đã đọc tất cả thông báo",
-      description: "Tất cả các thông báo đã được đánh dấu là đã đọc."
-    });
-  };
-
   // Delete notification
   const deleteNotification = (id: number) => {
-    const updatedNotifications = notifications.filter(n => n.id !== id);
-    setNotifications(updatedNotifications);
+    const storedNotifications = JSON.parse(localStorage.getItem('greenfresh-notifications') || '[]');
+    const updatedNotifications = storedNotifications.filter((n: any) => n.id !== id);
+    localStorage.setItem('greenfresh-notifications', JSON.stringify(updatedNotifications));
+    
+    // Update state
+    const newNotifications = notifications.filter(n => n.id !== id);
     toast({
       title: "Đã xóa thông báo",
       description: "Thông báo đã được xóa thành công."
     });
+    // Force reload to update state
+    window.location.reload();
   };
 
   // Delete all read notifications
   const deleteAllRead = () => {
-    const updatedNotifications = notifications.filter(n => !n.isRead);
-    setNotifications(updatedNotifications);
+    const storedNotifications = JSON.parse(localStorage.getItem('greenfresh-notifications') || '[]');
+    const updatedNotifications = storedNotifications.filter((n: any) => !n.isRead);
+    localStorage.setItem('greenfresh-notifications', JSON.stringify(updatedNotifications));
+    
     toast({
       title: "Đã xóa thông báo",
       description: "Tất cả thông báo đã đọc đã được xóa thành công."
     });
+    // Force reload to update state
+    window.location.reload();
   };
 
   // Format date
@@ -144,9 +85,6 @@ const Notifications = () => {
         return <Bell className="h-5 w-5 text-gray-500" />;
     }
   };
-
-  // Count unread notifications
-  const unreadCount = notifications.filter(n => !n.isRead).length;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -255,13 +193,14 @@ const Notifications = () => {
                             {notification.message}
                           </p>
                           
-                          {notification.type === 'order' && (
+                          {notification.type === 'order' && notification.orderId && (
                             <div className="mt-2">
                               <Link
-                                to={'/admin/orders'}
-                                className="text-sm text-greenfresh-600 hover:underline"
+                                to={`/order/${notification.orderId}`}
+                                className="text-sm text-greenfresh-600 hover:underline flex items-center"
                               >
-                                Xem chi tiết
+                                <FileText className="h-4 w-4 mr-1" />
+                                Xem chi tiết đơn hàng
                               </Link>
                             </div>
                           )}

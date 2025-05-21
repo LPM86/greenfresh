@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Notifications from "./pages/Notifications";
+import OrderDetails from "./pages/OrderDetails";
 import Chatbot from "./pages/Chatbot";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/notifications" element={<Notifications />} />
+            <Route path="/order/:orderId" element={<OrderDetails />} />
             <Route path="/chat" element={<Chatbot />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

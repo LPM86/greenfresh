@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -11,10 +10,20 @@ import { Separator } from '@/components/ui/separator';
 import { toast } from '@/components/ui/use-toast';
 import { useAuth } from '@/contexts/AuthContext';
 import { Product } from '@/components/ProductCard';
+import { useNotifications } from '@/hooks/useNotifications';
 
 interface CartItem extends Product {
   quantity: number;
   selected: boolean;
+}
+
+export interface Order {
+  id: number;
+  items: CartItem[];
+  customer: OrderDetails;
+  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+  total: number;
+  createdAt: string;
 }
 
 interface OrderDetails {
@@ -31,6 +40,7 @@ interface OrderDetails {
 const Checkout = () => {
   const navigate = useNavigate();
   const { isAuthenticated, currentUser } = useAuth();
+  const { addNotification } = useNotifications();
   
   const [cartItems, setCartItems] = useState<Record<number, CartItem>>({});
   const [selectedItems, setSelectedItems] = useState<CartItem[]>([]);
@@ -137,8 +147,9 @@ const Checkout = () => {
     }
     
     // Create order
-    const order = {
-      id: Date.now(),
+    const orderId = Date.now();
+    const order: Order = {
+      id: orderId,
       items: selectedItems,
       customer: orderDetails,
       status: 'pending',
@@ -151,19 +162,37 @@ const Checkout = () => {
     existingOrders.push(order);
     localStorage.setItem('greenfresh-orders', JSON.stringify(existingOrders));
     
-    // Save order to notifications
-    const notification = {
+    // Save user orders by userId if authenticated
+    if (currentUser && currentUser.id) {
+      const userOrdersKey = `greenfresh-user-orders-${currentUser.id}`;
+      const userOrders = JSON.parse(localStorage.getItem(userOrdersKey) || '[]');
+      userOrders.push(order);
+      localStorage.setItem(userOrdersKey, JSON.stringify(userOrders));
+    }
+    
+    // Create and save notification for admin
+    const adminNotification = {
       id: Date.now(),
       type: 'order',
-      title: `Đơn hàng mới #${order.id}`,
-      message: `Đơn hàng mới từ ${orderDetails.fullName}`,
+      title: `Đơn hàng mới #${orderId}`,
+      message: `Đơn hàng mới từ ${orderDetails.fullName} với tổng giá trị ${formatPrice(calculateSubtotal())}`,
       isRead: false,
       createdAt: new Date().toISOString(),
     };
     
     const existingNotifications = JSON.parse(localStorage.getItem('greenfresh-notifications') || '[]');
-    existingNotifications.unshift(notification);
+    existingNotifications.unshift(adminNotification);
     localStorage.setItem('greenfresh-notifications', JSON.stringify(existingNotifications));
+    
+    // Create notification for user
+    if (currentUser) {
+      addNotification({
+        type: 'order',
+        title: `Đơn hàng #${orderId} đã đặt thành công`,
+        message: `Cảm ơn bạn đã đặt hàng. Đơn hàng của bạn đang được xử lý.`,
+        orderId: orderId
+      });
+    }
     
     // Remove purchased items from cart
     const newCart = { ...cartItems };
@@ -172,14 +201,23 @@ const Checkout = () => {
     });
     localStorage.setItem('greenfresh-cart', JSON.stringify(newCart));
     
-    // Show success message
+    // Show detailed success toast notification
     toast({
-      title: "Đặt hàng thành công",
-      description: "Cảm ơn bạn đã mua sắm tại GreenFresh!",
+      title: "Đặt hàng thành công!",
+      description: (
+        <div className="mt-2">
+          <p><strong>Mã đơn hàng:</strong> #{orderId}</p>
+          <p><strong>Tổng tiền:</strong> {formatPrice(calculateSubtotal())}</p>
+          <p><strong>Phương thức thanh toán:</strong> {orderDetails.paymentMethod === 'cod' ? 'Thanh toán khi nhận hàng' : 'Chuyển khoản ngân hàng'}</p>
+          <p className="mt-1 text-sm">Chi tiết đơn hàng được gửi trong phần Thông báo.</p>
+        </div>
+      ),
     });
     
-    // Redirect to homepage
-    navigate('/');
+    // Redirect to homepage after a short delay
+    setTimeout(() => {
+      navigate('/');
+    }, 3000);
   };
   
   return (
