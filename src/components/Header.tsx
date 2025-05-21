@@ -1,137 +1,294 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  ShoppingCart, 
-  Bell, 
-  Search, 
-  Menu, 
-  X,
-  MessageSquare,
-  Home
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Bell, ShoppingCart, Search, Menu, User, LogOut, Settings, Package, BarChart2 } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNotifications } from '@/hooks/useNotifications';
+import { useMobile } from '@/hooks/use-mobile';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
-  const [notificationCount, setNotificationCount] = useState(2);
+const Header: React.FC = () => {
+  const location = useLocation();
+  const { isMobile } = useMobile();
+  const [showMenu, setShowMenu] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
   
-  // Mock function - would be replaced with actual cart context later
-  React.useEffect(() => {
-    const cart = localStorage.getItem('greenfresh-cart');
-    if (cart) {
-      const parsedCart = JSON.parse(cart);
-      setCartCount(Object.keys(parsedCart).length);
-    }
+  const { isAuthenticated, currentUser, userRole, logout } = useAuth();
+  const { unreadCount } = useNotifications();
+
+  // Update cart count
+  useEffect(() => {
+    const updateCartCount = () => {
+      const cart = localStorage.getItem('greenfresh-cart');
+      if (cart) {
+        const parsedCart = JSON.parse(cart);
+        setCartItemCount(Object.keys(parsedCart).length);
+      }
+    };
+    
+    updateCartCount();
+    
+    // Listen to storage events to update the cart count when it changes
+    window.addEventListener('storage', updateCartCount);
+    
+    return () => {
+      window.removeEventListener('storage', updateCartCount);
+    };
   }, []);
 
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
   return (
-    <header className="sticky top-0 z-10 bg-white shadow-sm">
+    <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <span className="text-xl font-bold text-greenfresh-600">Green<span className="text-greenfresh-500">Fresh</span></span>
-          </Link>
+          {/* Logo & Menu Button */}
+          <div className="flex items-center">
+            {isMobile && (
+              <Button variant="ghost" size="icon" onClick={toggleMenu} className="mr-2">
+                <Menu className="h-5 w-5" />
+              </Button>
+            )}
+            <Link to="/" className="text-2xl font-bold text-greenfresh-600">
+              GreenFresh
+            </Link>
+          </div>
 
           {/* Search bar - hidden on mobile */}
-          <div className="hidden md:flex relative flex-1 mx-6 max-w-md">
-            <Input 
-              type="search" 
-              placeholder="Tìm kiếm rau sạch..." 
-              className="pl-10 pr-4 w-full" 
-            />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-          </div>
+          {!isMobile && (
+            <div className="flex-1 max-w-md mx-4">
+              <div className="relative">
+                <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Input
+                  type="text"
+                  placeholder="Tìm kiếm rau củ, trái cây..."
+                  className="w-full pl-9 bg-gray-50"
+                />
+              </div>
+            </div>
+          )}
 
-          {/* Navigation - hidden on mobile */}
-          <nav className="hidden md:flex items-center space-x-2">
-            <Link to="/">
-              <Button variant="ghost" size="sm">
-                <Home className="h-5 w-5 mr-1" /> Trang chủ
+          {/* Navigation - desktop */}
+          {!isMobile && (
+            <nav className="hidden md:flex space-x-6">
+              <Link
+                to="/"
+                className={`text-sm font-medium ${
+                  isActive('/') ? 'text-greenfresh-600' : 'text-gray-600 hover:text-greenfresh-500'
+                }`}
+              >
+                Trang chủ
+              </Link>
+              <Link
+                to="/products"
+                className={`text-sm font-medium ${
+                  isActive('/products') ? 'text-greenfresh-600' : 'text-gray-600 hover:text-greenfresh-500'
+                }`}
+              >
+                Sản phẩm
+              </Link>
+              <Link
+                to="/chat"
+                className={`text-sm font-medium ${
+                  isActive('/chat') ? 'text-greenfresh-600' : 'text-gray-600 hover:text-greenfresh-500'
+                }`}
+              >
+                Tư vấn AI
+              </Link>
+            </nav>
+          )}
+
+          {/* Icons */}
+          <div className="flex items-center space-x-4">
+            {/* Search icon - only on mobile */}
+            {isMobile && (
+              <Button variant="ghost" size="icon">
+                <Search className="h-5 w-5" />
               </Button>
-            </Link>
-            <Link to="/chat">
-              <Button variant="ghost" size="sm">
-                <MessageSquare className="h-5 w-5 mr-1" /> Chat AI
-              </Button>
-            </Link>
-            <Link to="/notifications">
-              <Button variant="ghost" size="sm" className="relative">
-                <Bell className="h-5 w-5 mr-1" /> Thông báo
-                {notificationCount > 0 && (
-                  <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 bg-orange-400">
-                    {notificationCount}
-                  </Badge>
+            )}
+            
+            {/* Cart */}
+            <Link to="/cart" className="relative">
+              <Button variant="ghost" size="icon">
+                <ShoppingCart className="h-5 w-5" />
+                {cartItemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
+                    {cartItemCount}
+                  </span>
                 )}
               </Button>
             </Link>
-            <Link to="/cart">
-              <Button variant="ghost" size="sm" className="relative">
-                <ShoppingCart className="h-5 w-5 mr-1" /> Giỏ hàng
-                {cartCount > 0 && (
-                  <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 bg-orange-400">
-                    {cartCount}
-                  </Badge>
+            
+            {/* Notifications */}
+            <Link to="/notifications" className="relative">
+              <Button variant="ghost" size="icon">
+                <Bell className="h-5 w-5" />
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
+                    {unreadCount > 9 ? '9+' : unreadCount}
+                  </span>
                 )}
               </Button>
             </Link>
-          </nav>
-
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-1"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
-        </div>
-
-        {/* Search bar - mobile only */}
-        <div className="md:hidden py-2">
-          <div className="relative">
-            <Input 
-              type="search" 
-              placeholder="Tìm kiếm rau sạch..." 
-              className="pl-10 pr-4 w-full" 
-            />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            
+            {/* User menu */}
+            {isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src="" />
+                      <AvatarFallback className="bg-greenfresh-100 text-greenfresh-600">
+                        {currentUser?.name.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col">
+                      <span>{currentUser?.name}</span>
+                      <span className="text-xs text-muted-foreground">{currentUser?.email}</span>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  
+                  {userRole === 'admin' && (
+                    <>
+                      <DropdownMenuItem asChild>
+                        <Link to="/admin/dashboard" className="flex items-center cursor-pointer">
+                          <BarChart2 className="mr-2 h-4 w-4" />
+                          <span>Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      
+                      <DropdownMenuItem asChild>
+                        <Link to="/admin/products" className="flex items-center cursor-pointer">
+                          <Package className="mr-2 h-4 w-4" />
+                          <span>Quản lý sản phẩm</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                    </>
+                  )}
+                  
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile" className="flex items-center cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Tài khoản</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild>
+                    <Link to="/settings" className="flex items-center cursor-pointer">
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>Cài đặt</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuSeparator />
+                  
+                  <DropdownMenuItem 
+                    className="flex items-center cursor-pointer text-red-500 focus:text-red-500"
+                    onClick={logout}
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Đăng xuất</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button asChild className="bg-greenfresh-600 hover:bg-greenfresh-700">
+                <Link to="/login">Đăng nhập</Link>
+              </Button>
+            )}
           </div>
         </div>
       </div>
 
       {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
-          <div className="container mx-auto px-4 py-2">
-            <nav className="flex flex-col space-y-2">
-              <Link to="/" className="py-2 px-4 hover:bg-greenfresh-50 rounded-md flex items-center">
-                <Home className="h-5 w-5 mr-2" /> Trang chủ
-              </Link>
-              <Link to="/chat" className="py-2 px-4 hover:bg-greenfresh-50 rounded-md flex items-center">
-                <MessageSquare className="h-5 w-5 mr-2" /> Chat AI
-              </Link>
-              <Link to="/notifications" className="py-2 px-4 hover:bg-greenfresh-50 rounded-md flex items-center">
-                <Bell className="h-5 w-5 mr-2" /> Thông báo
-                {notificationCount > 0 && (
-                  <Badge className="ml-auto bg-orange-400">{notificationCount}</Badge>
-                )}
-              </Link>
-              <Link to="/cart" className="py-2 px-4 hover:bg-greenfresh-50 rounded-md flex items-center">
-                <ShoppingCart className="h-5 w-5 mr-2" /> Giỏ hàng
-                {cartCount > 0 && (
-                  <Badge className="ml-auto bg-orange-400">{cartCount}</Badge>
-                )}
-              </Link>
-            </nav>
-          </div>
+      {isMobile && showMenu && (
+        <div className="bg-white border-t py-2 px-4">
+          <nav className="flex flex-col space-y-2">
+            <Link
+              to="/"
+              className={`px-3 py-2 rounded-md ${
+                isActive('/') ? 'bg-greenfresh-50 text-greenfresh-600' : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={toggleMenu}
+            >
+              Trang chủ
+            </Link>
+            <Link
+              to="/products"
+              className={`px-3 py-2 rounded-md ${
+                isActive('/products') ? 'bg-greenfresh-50 text-greenfresh-600' : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={toggleMenu}
+            >
+              Sản phẩm
+            </Link>
+            <Link
+              to="/chat"
+              className={`px-3 py-2 rounded-md ${
+                isActive('/chat') ? 'bg-greenfresh-50 text-greenfresh-600' : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={toggleMenu}
+            >
+              Tư vấn AI
+            </Link>
+            
+            {userRole === 'admin' && (
+              <>
+                <div className="my-2 border-t pt-2">
+                  <h3 className="px-3 text-sm font-semibold text-gray-500">Admin</h3>
+                </div>
+                <Link
+                  to="/admin/dashboard"
+                  className={`px-3 py-2 rounded-md ${
+                    isActive('/admin/dashboard') ? 'bg-greenfresh-50 text-greenfresh-600' : 'text-gray-600 hover:bg-gray-50'
+                  }`}
+                  onClick={toggleMenu}
+                >
+                  Dashboard
+                </Link>
+                <Link
+                  to="/admin/products"
+                  className={`px-3 py-2 rounded-md ${
+                    isActive('/admin/products') ? 'bg-greenfresh-50 text-greenfresh-600' : 'text-gray-600 hover:bg-gray-50'
+                  }`}
+                  onClick={toggleMenu}
+                >
+                  Quản lý sản phẩm
+                </Link>
+                <Link
+                  to="/admin/orders"
+                  className={`px-3 py-2 rounded-md ${
+                    isActive('/admin/orders') ? 'bg-greenfresh-50 text-greenfresh-600' : 'text-gray-600 hover:bg-gray-50'
+                  }`}
+                  onClick={toggleMenu}
+                >
+                  Quản lý đơn hàng
+                </Link>
+              </>
+            )}
+          </nav>
         </div>
       )}
     </header>

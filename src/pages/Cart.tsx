@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -9,6 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { Plus, Minus, Trash2, ArrowRight } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { Product } from '@/components/ProductCard';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface CartItem extends Product {
   quantity: number;
@@ -16,6 +16,9 @@ interface CartItem extends Product {
 }
 
 const Cart: React.FC = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  
   const [cartItems, setCartItems] = useState<Record<number, CartItem>>({});
   const [voucher, setVoucher] = useState('');
   const [discount, setDiscount] = useState(0);
@@ -151,27 +154,23 @@ const Cart: React.FC = () => {
   
   // Checkout handler
   const handleCheckout = () => {
-    if (Object.values(cartItems).some(item => item.selected)) {
+    if (!isAuthenticated) {
       toast({
-        title: "Đặt hàng thành công",
-        description: "Cảm ơn bạn đã mua hàng tại GreenFresh!"
+        title: "Yêu cầu đăng nhập",
+        description: "Vui lòng đăng nhập để tiến hành thanh toán.",
+        variant: "destructive",
       });
-      
-      // Only remove selected items from cart
-      setCartItems(prev => {
-        const newCart = { ...prev };
-        Object.keys(newCart).forEach(key => {
-          if (newCart[parseInt(key)].selected) {
-            delete newCart[parseInt(key)];
-          }
-        });
-        return newCart;
-      });
+      navigate('/login');
+      return;
+    }
+    
+    if (Object.values(cartItems).some(item => item.selected)) {
+      navigate('/checkout');
     } else {
       toast({
         title: "Vui lòng chọn sản phẩm",
         description: "Bạn chưa chọn sản phẩm nào để thanh toán.",
-        variant: "destructive"
+        variant: "destructive",
       });
     }
   };
