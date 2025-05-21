@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
@@ -15,7 +15,7 @@ const products: Record<number, Product & { description: string; origin: string; 
   101: {
     id: 101,
     name: "Cà rốt hữu cơ",
-    image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5d4f7?auto=format&fit=crop&w=900&h=900&q=80",
+    image: "https://cdn.pixabay.com/photo/2018/06/23/15/16/carrots-3493237_1280.jpg",
     price: 25000,
     originalPrice: 38000,
     unit: "kg",
@@ -28,13 +28,85 @@ const products: Record<number, Product & { description: string; origin: string; 
   102: {
     id: 102,
     name: "Cải xanh",
-    image: "https://images.unsplash.com/photo-1567375698348-5d9d5ae99de0?auto=format&fit=crop&w=900&h=900&q=80",
+    image: "https://cdn.pixabay.com/photo/2018/08/30/20/47/spinach-3643523_1280.jpg",
     price: 15000,
     originalPrice: 20000,
     unit: "bó",
     discount: 25,
     description: "Cải xanh tươi ngon, giàu vitamin C và chất xơ. Lá cải xanh mướt, không bị úa vàng, không có sâu bệnh.",
     origin: "Hà Nội",
+    standard: "VietGAP"
+  },
+  103: {
+    id: 103,
+    name: "Dâu tây",
+    image: "https://cdn.pixabay.com/photo/2018/04/29/11/54/strawberries-3359755_1280.jpg",
+    price: 110000,
+    originalPrice: 145000,
+    unit: "hộp",
+    discount: 20,
+    isHot: true,
+    description: "Dâu tây Đà Lạt tươi ngon, quả to đỏ mọng, ngọt thanh và thơm. Giàu vitamin C và chất chống oxy hóa.",
+    origin: "Đà Lạt",
+    standard: "VietGAP"
+  },
+  104: {
+    id: 104,
+    name: "Xà lách",
+    image: "https://cdn.pixabay.com/photo/2018/10/03/22/08/green-3722767_1280.jpg",
+    price: 20000,
+    originalPrice: 28000,
+    unit: "bó",
+    discount: 30,
+    isOrganic: true,
+    description: "Xà lách tươi xanh, lá giòn ngọt, không thuốc trừ sâu. Phù hợp cho salad và các món ăn kèm.",
+    origin: "Đà Lạt",
+    standard: "VietGAP"
+  },
+  105: {
+    id: 105,
+    name: "Bơ",
+    image: "https://cdn.pixabay.com/photo/2017/12/10/14/47/avocado-3010511_1280.jpg",
+    price: 95000,
+    originalPrice: 120000,
+    unit: "kg",
+    discount: 15,
+    isHot: true,
+    description: "Bơ Booth Đắk Lắk, quả to đều, thịt vàng béo, không sơ và rất ít hạt. Giàu chất béo tốt cho sức khỏe.",
+    origin: "Đắk Lắk",
+    standard: "VietGAP"
+  },
+  201: {
+    id: 201,
+    name: "Combo salad",
+    image: "https://cdn.pixabay.com/photo/2016/06/30/18/49/salad-1489580_1280.jpg",
+    price: 89000,
+    unit: "combo",
+    isHot: true,
+    description: "Combo salad gồm xà lách, cà chua bi, dưa chuột, cà rốt, và sốt mè rang. Đầy đủ dinh dưỡng cho bữa ăn nhẹ.",
+    origin: "Đà Lạt",
+    standard: "VietGAP"
+  },
+  202: {
+    id: 202,
+    name: "Khoai tây",
+    image: "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg",
+    price: 25000,
+    unit: "kg",
+    isOrganic: true,
+    description: "Khoai tây Đà Lạt, củ to đều, vỏ mỏng, thịt vàng, ít mắt. Phù hợp cho các món chiên, xào, nướng.",
+    origin: "Đà Lạt",
+    standard: "VietGAP"
+  },
+  301: {
+    id: 301,
+    name: "Bông cải xanh",
+    image: "https://cdn.pixabay.com/photo/2016/03/05/19/02/broccoli-1238250_1280.jpg",
+    price: 48000,
+    unit: "kg",
+    isOrganic: true,
+    description: "Bông cải xanh tươi ngon, bông to, cọng nhỏ, không sâu bệnh. Giàu vitamin C, K và chất chống oxy hóa.",
+    origin: "Đà Lạt",
     standard: "VietGAP"
   }
 };
@@ -44,7 +116,7 @@ const relatedProducts: Product[] = [
   {
     id: 103,
     name: "Dâu tây",
-    image: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=500&h=500&q=80",
+    image: "https://cdn.pixabay.com/photo/2018/04/29/11/54/strawberries-3359755_1280.jpg",
     price: 110000,
     originalPrice: 145000,
     unit: "hộp",
@@ -54,7 +126,7 @@ const relatedProducts: Product[] = [
   {
     id: 104,
     name: "Xà lách",
-    image: "https://images.unsplash.com/photo-1621194166361-6d3893b793e9?auto=format&fit=crop&w=500&h=500&q=80",
+    image: "https://cdn.pixabay.com/photo/2018/10/03/22/08/green-3722767_1280.jpg",
     price: 20000,
     originalPrice: 28000,
     unit: "bó",
@@ -64,7 +136,7 @@ const relatedProducts: Product[] = [
   {
     id: 105,
     name: "Bơ",
-    image: "https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?auto=format&fit=crop&w=500&h=500&q=80",
+    image: "https://cdn.pixabay.com/photo/2017/12/10/14/47/avocado-3010511_1280.jpg",
     price: 95000,
     originalPrice: 120000,
     unit: "kg",
@@ -74,7 +146,7 @@ const relatedProducts: Product[] = [
   {
     id: 201,
     name: "Combo salad",
-    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&h=500&q=80",
+    image: "https://cdn.pixabay.com/photo/2016/06/30/18/49/salad-1489580_1280.jpg",
     price: 89000,
     unit: "combo",
     isHot: true
@@ -82,7 +154,7 @@ const relatedProducts: Product[] = [
   {
     id: 202,
     name: "Khoai tây",
-    image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=500&h=500&q=80",
+    image: "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg",
     price: 25000,
     unit: "kg",
     isOrganic: true

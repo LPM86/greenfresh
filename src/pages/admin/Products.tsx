@@ -78,6 +78,106 @@ const productsData: Product[] = [
     unit: "kg",
     available: true,
     description: "Bông cải xanh tươi ngon, giàu dinh dưỡng."
+  },
+  {
+    id: 6,
+    name: "Khoai tây Đà Lạt",
+    price: 28000,
+    image: "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg",
+    category: "Củ",
+    unit: "kg",
+    available: true,
+    description: "Khoai tây Đà Lạt tươi ngon, giàu tinh bột và khoáng chất."
+  },
+  {
+    id: 7,
+    name: "Dâu tây Đà Lạt",
+    price: 120000,
+    image: "https://cdn.pixabay.com/photo/2018/04/29/11/54/strawberries-3359755_1280.jpg",
+    category: "Trái cây",
+    unit: "hộp",
+    available: true,
+    description: "Dâu tây Đà Lạt tươi ngon, ngọt thanh, không thuốc bảo quản."
+  },
+  {
+    id: 8,
+    name: "Ớt chuông ba màu",
+    price: 65000,
+    image: "https://cdn.pixabay.com/photo/2016/08/03/01/10/paprika-1565105_1280.jpg",
+    category: "Rau củ",
+    unit: "kg",
+    available: true,
+    description: "Ớt chuông ba màu tươi ngon, nhiều màu sắc bắt mắt."
+  },
+  {
+    id: 9,
+    name: "Bắp cải tím",
+    price: 25000,
+    image: "https://cdn.pixabay.com/photo/2019/09/06/07/03/red-cabbage-4455958_1280.jpg",
+    category: "Rau lá",
+    unit: "kg",
+    available: true,
+    description: "Bắp cải tím tươi ngon, giàu chất chống oxy hóa."
+  },
+  {
+    id: 10,
+    name: "Nho xanh không hạt",
+    price: 180000,
+    image: "https://cdn.pixabay.com/photo/2016/04/25/07/03/grapes-1351351_1280.jpg",
+    category: "Trái cây",
+    unit: "kg",
+    available: true,
+    description: "Nho xanh không hạt nhập khẩu, ngọt thanh, không hạt."
+  },
+  {
+    id: 11,
+    name: "Chanh vàng",
+    price: 45000,
+    image: "https://cdn.pixabay.com/photo/2017/02/05/12/31/lemons-2039830_1280.jpg",
+    category: "Trái cây",
+    unit: "kg",
+    available: true,
+    description: "Chanh vàng tươi ngon, giàu vitamin C."
+  },
+  {
+    id: 12,
+    name: "Cà tím",
+    price: 32000,
+    image: "https://cdn.pixabay.com/photo/2017/08/17/16/04/eggplant-2651074_1280.jpg",
+    category: "Rau củ",
+    unit: "kg",
+    available: true,
+    description: "Cà tím tươi ngon, thích hợp cho các món xào, nướng."
+  },
+  {
+    id: 13,
+    name: "Bí đỏ",
+    price: 25000,
+    image: "https://cdn.pixabay.com/photo/2017/07/19/15/23/pumpkin-2519423_1280.jpg",
+    category: "Củ",
+    unit: "kg",
+    available: true,
+    description: "Bí đỏ tươi ngon, giàu vitamin A và chất xơ."
+  },
+  {
+    id: 14,
+    name: "Chuối già",
+    price: 35000,
+    image: "https://cdn.pixabay.com/photo/2016/01/03/17/59/bananas-1119790_1280.jpg",
+    category: "Trái cây",
+    unit: "nải",
+    available: true,
+    description: "Chuối già tươi ngon, giàu kali và vitamin B6."
+  },
+  {
+    id: 15,
+    name: "Đậu Hà Lan",
+    price: 40000,
+    image: "https://cdn.pixabay.com/photo/2015/03/16/15/39/peas-676542_1280.jpg",
+    category: "Đậu các loại",
+    unit: "kg",
+    available: true,
+    description: "Đậu Hà Lan tươi ngon, giàu protein thực vật."
   }
 ];
 

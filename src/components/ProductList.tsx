@@ -3,6 +3,7 @@ import React from 'react';
 import ProductCard, { Product } from './ProductCard';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ProductListProps {
   title: string;
@@ -11,6 +12,11 @@ interface ProductListProps {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ title, seeAllLink, products }) => {
+  const isMobile = useIsMobile();
+  
+  // Limit products shown on mobile
+  const displayProducts = isMobile ? products.slice(0, 4) : products;
+  
   return (
     <div className="my-8">
       <div className="flex items-center justify-between mb-4">
@@ -23,7 +29,7 @@ const ProductList: React.FC<ProductListProps> = ({ title, seeAllLink, products }
       </div>
       
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {products.map(product => (
+        {displayProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
