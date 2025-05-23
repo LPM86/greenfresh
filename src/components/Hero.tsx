@@ -15,7 +15,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1400&h=400&q=80",
+    image: "https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/492326881_1110751861049497_4930080799391637168_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=tVUJhxZppA8Q7kNvwFKRYxx&_nc_oc=Adlcq1IBK-cvOQiT4OcM-omK5Q4onGJmWt3evc9gsu13YjgQoDvJudMHAHLXnDzbMZA&_nc_zt=23&_nc_ht=scontent.fhan2-3.fna&_nc_gid=8AAyyUldn_u8Doua4nPZlg&oh=00_AfL8plPRlhK5_MEohEbvjMtb0Bw74LX5oqMx8J5BSndVmA&oe=6833DA08",
     title: "Rau sạch từ nông trại đến bàn ăn",
     description: "Sản phẩm tươi mới mỗi ngày, đảm bảo chất lượng VietGAP",
     buttonText: "Mua ngay",
@@ -23,7 +23,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=1400&h=400&q=80",
+    image: "https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-6/486226083_1089131296544887_7651220681822985335_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=0KjENoExm0IQ7kNvwE9Ueuf&_nc_oc=Adl713hTQ1PnnqnUHDDtZgUIMGVA0R2qDA6S30Xl5P8pw9hNsvwiu_u4ZfFC8TtTZD8&_nc_zt=23&_nc_ht=scontent.fhan14-5.fna&_nc_gid=zQrGUiRckIYkz9nT1MTWyg&oh=00_AfJLiR6RhEdcuNqwhUqOtEqBnIXvGuXAvBmQdMNlFhCdhw&oe=6835DAEC",
     title: "Combo tiện lợi",
     description: "Tiết kiệm thời gian với các combo đã được chuẩn bị sẵn",
     buttonText: "Xem combo",
@@ -31,8 +31,8 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&h=400&q=80",
-    title: "Flash Sale tháng 5",
+    image: "https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/484688465_1085418613582822_997120347676150464_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=jWZyuMRZDeQQ7kNvwHx37nz&_nc_oc=AdlZH4q1QImzyDJMuSmOnWNgjt4Sq6xDGuDwnNtjEjdC141l4699CZ6bZw4W_zwB2AU&_nc_zt=23&_nc_ht=scontent.fhan14-2.fna&_nc_gid=Xzs9G_EFim2THa4K4LvqHw&oh=00_AfLPKIXaiWK5iuTvxFKSPtBXFMernnQQ_lEprc63oVSWbg&oe=6835B413",
+    title: "Deal Hot",
     description: "Giảm giá lên đến 30% cho các sản phẩm mùa hè",
     buttonText: "Xem ưu đãi",
     link: "/products"
