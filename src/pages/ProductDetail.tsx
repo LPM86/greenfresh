@@ -15,7 +15,7 @@ const products: Record<number, Product & { description: string; origin: string; 
   101: {
     id: 101,
     name: "Cà rốt hữu cơ",
-    image: "https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/485366400_1086982860093064_3153044352843123838_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=fDWm1HZJEIcQ7kNvwFFTl9Q&_nc_oc=AdlLCnQdpWYp46MQorXLzFHNGDDQwZ-TkrkmcXyGy8YBdcrKlcAa2w_htl0simfCX8w&_nc_zt=23&_nc_ht=scontent.fhan14-4.fna&_nc_gid=7KVi7htxCSWisxr-VKfw-w&oh=00_AfIYhWNYGAYepvb-1olAX7sIp9ngPDQDxXMYSLrEppF8nQ&oe=68344A09",
+    image: "/images/carot1.jpg",
     price: 26000,
     originalPrice: 38000,
     unit: "kg",
@@ -28,7 +28,7 @@ const products: Record<number, Product & { description: string; origin: string; 
   102: {
     id: 102,
     name: "Khoai tây",
-    image: "https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/484626089_1086982773426406_3135632511877013615_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=niRot-mJCiYQ7kNvwGYbs4q&_nc_oc=AdkgkjIj6hXjtiRHEPKKu0nRuwUhBkgYAfHHgjzsHxqO_k-zx-9PBqM-tqYkM1-e7u8&_nc_zt=23&_nc_ht=scontent.fhan14-4.fna&_nc_gid=uW4t2gVBZDjgXeGPM5_lTg&oh=00_AfIlwclzVtmSyucVtNyHyyaaTzayKFgond8KrRxaUMXcCg&oe=68345ABE",
+    image: "/images/khoaitay.jpg",
     price: 26000,
     originalPrice: 30000,
     unit: "kg",
@@ -40,7 +40,7 @@ const products: Record<number, Product & { description: string; origin: string; 
   103: {
     id: 103,
     name: "Khoai lang mật",
-    image: "https://scontent.fhan18-1.fna.fbcdn.net/v/t39.30808-6/485671722_1087406460050704_4577888558723755787_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IZqIIb5Zd7QQ7kNvwHuFF7w&_nc_oc=Adl1cFyIKnsnQr9FmlZaKThbh6nd2GWiQ0REjFB1ZMsj7QiPc7lfhiUDud_jcFlOON4&_nc_zt=23&_nc_ht=scontent.fhan18-1.fna&_nc_gid=fZQAo7OkVFPWDf8nJBdksA&oh=00_AfKMouAgJpKl8n6Vc8x32kHvRnRVGplu6mo7sjo8FxntZQ&oe=6834414A",
+    image: "/images/khoailang1.jpg",
     price: 350000,
     originalPrice: 40000,
     unit: "kg",
@@ -128,8 +128,8 @@ const products: Record<number, Product & { description: string; origin: string; 
   201: {
     id: 201,
     name: "Combo thực đơn 3 ngày cho 3 người ăn chay",
-    image: "https://scontent.fhan18-1.fna.fbcdn.net/v/t39.30808-6/485381070_1087426083382075_4680739124045018512_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=eIavq3vcmqIQ7kNvwG-b3Q8&_nc_oc=Adl1v3oWOCsO6Su64o5jMJJ6_XIli_6uvkFG7H7Ze6XffxxgFNpe8zVTHBF0uRzEkyE&_nc_zt=23&_nc_ht=scontent.fhan18-1.fna&_nc_gid=nCbnFICGOLxtd3--zo9jYg&oh=00_AfIzOf5RrzH_THXmeU0y5uk04PtThLZSFEnWxOAxHDVugg&oe=683471DF",
-    price: 150000,
+    image: "/images/combo.jpg",
+    price: 180000,
     unit: "combo",
     isOrganic: true,
     description: "Liên hệ trực tiếp qua sđt: 0922407746 để được tư vấn chi tiết combo rau của bạn",
@@ -139,7 +139,7 @@ const products: Record<number, Product & { description: string; origin: string; 
   202: {
     id: 202,
     name: "Combo rau 5 ngày cho EAT CLEAN",
-    image: "https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/485730529_1085858763538807_760082714606329964_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dlPbD57XnSsQ7kNvwG0ptRC&_nc_oc=AdnWZfafSMyJ8Yl1aQbmv7VobuDQpOnFpa8saKO2Z7AnILPEcMW4di20YHgV7SBpgzc&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=Uzerf0NbJa9N0q4dR2QUPQ&oh=00_AfK2kokub4xIkVhl5fnN0SDtUeD_8zYvYCjgBKqqJdDjkA&oe=68347040",
+    image: "/images/combo2.jpg",
     price: 225000,
     unit: "combo",
     isOrganic: true,
@@ -151,7 +151,7 @@ const products: Record<number, Product & { description: string; origin: string; 
   203: {
     id: 203,
     name: "Combo 7 ngày cho 6 người ( 4 người lớn 2 trẻ nhỏ)",
-    image: "https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/484826758_1087425760048774_1475127256978488393_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ld_FMNvc3x8Q7kNvwHTThvH&_nc_oc=AdkjIrFKUZFdPNIj8X3aAXBpQdiLRhUnO5LnZirjq1VgLphnbcqhcZHOccf-iYcJTp4&_nc_zt=23&_nc_ht=scontent.fhan14-4.fna&_nc_gid=wbkvqAbTKfwaDtlZU0U7IA&oh=00_AfLV8Ei_lsnu8V5xxJoZB43KombM6Sgt3w0fqmSLzdLxrg&oe=68347D89",
+    image: "/images/raucuqua.jpg",
     price: 300000,
     unit: "combo",
     description: "Liên hệ trực tiếp qua sđt: 0922407746 để được tư vấn chi tiết combo rau của bạn",
@@ -162,8 +162,8 @@ const products: Record<number, Product & { description: string; origin: string; 
   204: {
      id: 204,
     name: "Combo 7 ngày cho 2 người",
-    image: "https://scontent.fhan18-1.fna.fbcdn.net/v/t39.30808-6/485745474_1087426110048739_286023859392089011_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=TNoyLCRL95YQ7kNvwF5wJ4P&_nc_oc=Adm0ILGczZFGUKZiaEvd6r_CytrQIoNNyp55vBUwaElcJ93phJBRFsOr2vNlaF_shGY&_nc_zt=23&_nc_ht=scontent.fhan18-1.fna&_nc_gid=XerA7hcprh3ZcW722z4vpQ&oh=00_AfKKz-n7R0XXyJWq5WSmGSF913SAg_RAlEeCIcpymxp4Ag&oe=68347952",
-    price: 190000,
+    image: "/images/setrau_n.jpg ",
+    price: 250000,
     unit: "combo",
     description: "Liên hệ trực tiếp qua sđt: 0922407746 để được tư vấn chi tiết combo rau của bạn",
     origin: "HTX Rau Sạch Yên Dũng",
@@ -206,7 +206,7 @@ const products: Record<number, Product & { description: string; origin: string; 
    301: {
     id: 301,
     name: "Cải ngọt",
-    image: "https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-6/485624445_1086982910093059_2289574749721440724_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=LFCt7etG75gQ7kNvwHrkbI6&_nc_oc=AdkTNieAA05lma-ptOF4bMnv-_LknmDq8wX_NO8RoyarUHWVplOU2jFRW2VbEBmHa6k&_nc_zt=23&_nc_ht=scontent.fhan14-5.fna&_nc_gid=JHTpnG_FsdUcZQ2ooQ9gXA&oh=00_AfIM-UNnCLHomYQjwJtAGODRYFl3H1JpVjxYVQiW-HTK9w&oe=68347A50",
+    image: "/images/caingot.jpg",
     price: 28000,
     unit: "500gr",
     description: "Cải ngọt tươi non, thân giòn, lá xanh mướt, vị ngọt nhẹ đặc trưng. Giàu vitamin A, C, axit folic và chất xơ – giúp thanh nhiệt, bổ máu, tốt cho tiêu hóa và tim mạch. Phù hợp để luộc, xào, nấu canh hoặc ăn lẩu.",
@@ -334,7 +334,7 @@ const relatedProducts: Product[] = [
   {
     id: 103,
     name: "Khoai lang mật",
-    image: "https://scontent.fhan18-1.fna.fbcdn.net/v/t39.30808-6/485671722_1087406460050704_4577888558723755787_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IZqIIb5Zd7QQ7kNvwHuFF7w&_nc_oc=Adl1cFyIKnsnQr9FmlZaKThbh6nd2GWiQ0REjFB1ZMsj7QiPc7lfhiUDud_jcFlOON4&_nc_zt=23&_nc_ht=scontent.fhan18-1.fna&_nc_gid=fZQAo7OkVFPWDf8nJBdksA&oh=00_AfKMouAgJpKl8n6Vc8x32kHvRnRVGplu6mo7sjo8FxntZQ&oe=6834414A",
+    image: "/images/khoailang1.jpg",
     price: 35000,
     originalPrice: 40000,
     unit: "kg",
@@ -363,7 +363,7 @@ isHot: true,
   {
     id: 201,
     name: "Combo thực đơn 3 ngày cho 3 người ăn chay",
-    image: "https://scontent.fhan18-1.fna.fbcdn.net/v/t39.30808-6/485381070_1087426083382075_4680739124045018512_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=eIavq3vcmqIQ7kNvwG-b3Q8&_nc_oc=Adl1v3oWOCsO6Su64o5jMJJ6_XIli_6uvkFG7H7Ze6XffxxgFNpe8zVTHBF0uRzEkyE&_nc_zt=23&_nc_ht=scontent.fhan18-1.fna&_nc_gid=nCbnFICGOLxtd3--zo9jYg&oh=00_AfIzOf5RrzH_THXmeU0y5uk04PtThLZSFEnWxOAxHDVugg&oe=683471DF",
+    image: "/images/combo.jpg",
     price: 150000,
     unit: "combo",
     isHot: true
@@ -371,7 +371,7 @@ isHot: true,
   {
     id: 203,
     name: "Combo 7 ngày cho 6 người ( 4 người lớn 2 trẻ nhỏ)",
-    image: "https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/484826758_1087425760048774_1475127256978488393_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ld_FMNvc3x8Q7kNvwHTThvH&_nc_oc=AdkjIrFKUZFdPNIj8X3aAXBpQdiLRhUnO5LnZirjq1VgLphnbcqhcZHOccf-iYcJTp4&_nc_zt=23&_nc_ht=scontent.fhan14-4.fna&_nc_gid=wbkvqAbTKfwaDtlZU0U7IA&oh=00_AfLV8Ei_lsnu8V5xxJoZB43KombM6Sgt3w0fqmSLzdLxrg&oe=68347D89",
+    image: "/images/raucuqua.jpg",
     price: 300000,
     unit: "combo",
     isOrganic: true

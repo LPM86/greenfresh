@@ -15,7 +15,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: "https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/492326881_1110751861049497_4930080799391637168_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=tVUJhxZppA8Q7kNvwFKRYxx&_nc_oc=Adlcq1IBK-cvOQiT4OcM-omK5Q4onGJmWt3evc9gsu13YjgQoDvJudMHAHLXnDzbMZA&_nc_zt=23&_nc_ht=scontent.fhan2-3.fna&_nc_gid=8AAyyUldn_u8Doua4nPZlg&oh=00_AfL8plPRlhK5_MEohEbvjMtb0Bw74LX5oqMx8J5BSndVmA&oe=6833DA08",
+    image: "/images/header1.jpg",
     title: "Rau sạch từ nông trại đến bàn ăn",
     description: "Sản phẩm tươi mới mỗi ngày, đảm bảo chất lượng VietGAP",
     buttonText: "Mua ngay",
