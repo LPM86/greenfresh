@@ -60,7 +60,7 @@ const flashSaleProducts: Product[] = [
     id: 103,
     name: "Khoai lang mật",
     image: "https://scontent.fhan18-1.fna.fbcdn.net/v/t39.30808-6/485671722_1087406460050704_4577888558723755787_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IZqIIb5Zd7QQ7kNvwHuFF7w&_nc_oc=Adl1cFyIKnsnQr9FmlZaKThbh6nd2GWiQ0REjFB1ZMsj7QiPc7lfhiUDud_jcFlOON4&_nc_zt=23&_nc_ht=scontent.fhan18-1.fna&_nc_gid=fZQAo7OkVFPWDf8nJBdksA&oh=00_AfKMouAgJpKl8n6Vc8x32kHvRnRVGplu6mo7sjo8FxntZQ&oe=6834414A",
-    price: 32000,
+    price: 35000,
     originalPrice: 40000,
     unit: "kg",
     discount: 20,
@@ -80,8 +80,8 @@ const flashSaleProducts: Product[] = [
     id: 105,
     name: "Cà chua đỏ",
     image: "https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/485290405_1086690746788942_774899754515586117_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=S0KxbSj3r6oQ7kNvwHWL3vf&_nc_oc=Adn9D8MRNF1ssWHVWPE8wnyIO-WOLIByiQTRgUlSB6_7Rk_JnmxkeorsjupXAaXdJ3I&_nc_zt=23&_nc_ht=scontent.fhan14-2.fna&_nc_gid=hvYblhKjc9-TPrZYcFOVQw&oh=00_AfK6ffwgjRYDO-E7bo5av0ftljzbmRVzoeQc45jpwsOWJg&oe=6835B4D8",
-    price: 20000,
-    originalPrice: 30000,
+    price: 25000,
+    originalPrice: 35000,
     unit: "kg",
     discount: 15,
     isHot: true
@@ -149,7 +149,7 @@ const popularProducts: Product[] = [
     id: 202,
     name: "Combo rau 5 ngày cho EAT CLEAN",
     image: "https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/485730529_1085858763538807_760082714606329964_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dlPbD57XnSsQ7kNvwG0ptRC&_nc_oc=AdnWZfafSMyJ8Yl1aQbmv7VobuDQpOnFpa8saKO2Z7AnILPEcMW4di20YHgV7SBpgzc&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=Uzerf0NbJa9N0q4dR2QUPQ&oh=00_AfK2kokub4xIkVhl5fnN0SDtUeD_8zYvYCjgBKqqJdDjkA&oe=68347040",
-    price: 175000,
+    price: 225000,
     unit: "combo",
     isOrganic: true
   },
