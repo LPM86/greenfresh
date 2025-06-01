@@ -14,13 +14,121 @@ interface Message {
 }
 
 const suggestedPrompts = [
-  "Gợi ý thực đơn eat clean cho gia đình 4 người",
-  "Thực đơn 3 bữa cho 2 người trong 1 tuần",
-  "Gợi ý nấu ăn với cà rốt và bông cải xanh",
-  "Làm salad với rau củ theo mùa"
+  // "Gợi ý thực đơn eat clean cho gia đình 4 người",
+  // "Thực đơn 3 bữa cho 2 người trong 1 tuần",
+  // "Gợi ý nấu ăn với cà rốt và bông cải xanh",
+  // "Làm salad với rau củ theo mùa",
+  "Mình muốn mua rau sạch cho 2 người ăn trong 3 ngày thì bên bạn có gói nào phù hợp không?",
+  "Mình muốn mua rau sạch cho 2 người ăn trong 3 ngày thì bên bạn có gói nào phù hợp không",
+  "Combo đó gồm những loại rau gì",
+  "Rau này lấy từ đâu? Có đảm bảo sạch không",
+  "Có được chọn rau theo sở thích không",
+  "Mình muốn có:các loại rau xanh, củ và tinh bột",
+  "Mình đồng ý combo đó. Giao như thế nào",
+  "Nguyễn Thị Ngọc, Số 7 ngách 30 ngõ 68 Xuân Thủy Cầu Giấy, 0922407744",
+
+
 ];
 
 const botResponses: Record<string, string> = {
+
+
+
+  "Mình muốn mua rau sạch cho 2 người ăn trong 3 ngày thì bên bạn có gói nào phù hợp không?": `Chào bạn 👋 Green Fresh hiện có Combo Rau Sạch 3 Ngày dành cho 2 người, 
+được thiết kế theo khẩu phần chuẩn Eat Clean, đầy đủ dinh dưỡng, tiện lợi và an toàn.`,
+
+  "Mình muốn mua rau sạch cho 2 người ăn trong 3 ngày thì bên bạn có gói nào phù hợp không": `Chào bạn 👋 Green Fresh hiện có Combo Rau Sạch 3 Ngày dành cho 2 người, 
+được thiết kế theo khẩu phần chuẩn Eat Clean, đầy đủ dinh dưỡng, tiện lợi và an toàn.`,
+
+  "Combo đó gồm những loại rau gì": `Combo tuần này gồm khoảng 6–8 loại rau tươi theo mùa, ví dụ:
+  * Cải ngọt, súp lơ xanh, cải bó xôi
+  * Dưa leo, mướp hương, cà chua bi, rau dền đỏ
+Trọng lượng: 3.5–4kg, đủ cho 2 người ăn trong 3 ngày.`,
+
+  "Rau này lấy từ đâu? Có đảm bảo sạch không": `Tất cả rau trong combo đều có nguồn gốc minh bạch.Canh tác theo quy trình không thuốc trừ sâu hóa học, không chất bảo quản, đảm bảo đạt chứng nhận VietGAP.
+`,
+
+
+  "Có được chọn rau theo sở thích không": `Đó là combo mình gợi ý sẵn nếu bạn muốn tiết kiệm thời gian lựa chọn. Nhưng nếu bạn không thấy phù hợp, bạn hoàn toàn có thể chuyển sang Combo Tự Chọn theo sở thích riêng nhé 🧺
+✨ Với combo này, bạn sẽ được tự thiết kế giỏ rau cho 3 ngày, vẫn đảm bảo khẩu phần cho 2 người.
+ Bạn chỉ cần nói cho mình biết những loại rau bạn muốn có trong combo của mình, ví dụ:
+ – Thích ăn rau cải nhưng không ăn được mướp
+ – Muốn có rau gia vị như thì là, tía tô
+ – Ưu tiên rau ít đắng như rau lang, bí xanh
+ Mình sẽ dựa vào đó để đề xuất giỏ rau phù hợp 💚`,
+
+
+  "Mình muốn có:các loại rau xanh, củ và tinh bột": `Dựa theo sở thích bạn đưa ra, mình sẽ thiết kế combo tự chọn cho 2 người trong 3 ngày và thực đơn đi kèm để bạn tham khảo nấu cho từng bữa nhé:
+
+Ngày 1: Khoai lang mật hấp,Dưa leo,cải ngọt ,Đỗ cove,Rau muống
+
+Ngày 2: Khoai lang, cà rốt, bầu sao ,Cải ngồng,Khoai tây , Cải chíp
+
+Ngày 3: Xà lách lolo + dưa leo,rau ngót,Bí xanh,Cải bẹ trắng
+-----------------------------------------------------------------
+🔸 Ngày 1
+Bữa sáng
+*Khoai lang mật hấp
+*Trứng luộc
+*Dưa leo thái lát
+
+Bữa trưa
+*Cơm trắng
+*Canh cải ngọt nấu thịt băm
+*Đỗ cove xào tỏi
+
+Bữa tối
+*Cơm trắng
+*Rau muống xào bò 
+*Cá chiên sả ớt
+-----------------------------------------------------------------
+
+🔸 Ngày 2
+Bữa sáng
+*háo khoai lang cà rốt
+*Thịt gà xé phay
+
+Bữa trưa
+*Cơm trắng
+*Canh bầu sao nấu tôm tươi
+*Cải ngồng xào tỏi
+*Khoai tây luộc
+
+Bữa tối
+*Cơm trắng
+*Gà luộc chấm mắm gừng
+*Cải chíp xào thịt lợn
+-----------------------------------------------------------------
+🔸 Ngày 3
+*Bữa sáng
+*Bánh mì ốp la
+*Xà lách lolo + dưa leo trộn dầu giấm
+
+Bữa trưa
+*Cơm trắng
+*Canh rau ngót nấu sườn lợn 
+*Bí xanh xào thịt băm
+
+Bữa tối
+*Cơm trắng
+*Cải bẹ trắng xào
+*Tôm rim mặn ngọt
+
+`,
+
+  "Mình đồng ý combo đó. Giao như thế nào": `Sau khi bạn xác nhận đặt hàng, Green Fresh sẽ giao hàng tận nơi trong vòng 24 giờ.Bạn vui lòng cung cấp:
+-Họ tên
+-Địa chỉ
+-Số điện thoại
+`,
+
+
+  "Nguyễn Thị Ngọc, Số 7 ngách 30 ngõ 68 Xuân Thủy Cầu Giấy, 0922407744": `Cảm ơn bạn đã cung cấp thông tin! Green Fresh sẽ giao hàng đến địa chỉ của bạn trong vòng 24 giờ. Bạn sẽ nhận được xác nhận đơn hàng qua tin nhắn sau khi đặt hàng thành công. Nếu có bất kỳ thay đổi nào về địa chỉ hoặc thông tin liên hệ, vui lòng thông báo cho chúng tôi nhé!`,
+
+
+
+
+
   "Gợi ý thực đơn eat clean cho gia đình 4 người": `Dưới đây là thực đơn Eat Clean cho gia đình 4 người trong 3 ngày:
 
 **Ngày 1:**
@@ -167,7 +275,7 @@ const Chatbot: React.FC = () => {
     // Simulate bot response
     setTimeout(() => {
       let responseText = '';
-      
+
       // Check if the input matches any predefined responses
       for (const [key, value] of Object.entries(botResponses)) {
         if (input.toLowerCase().includes(key.toLowerCase())) {
@@ -175,7 +283,7 @@ const Chatbot: React.FC = () => {
           break;
         }
       }
-      
+
       // If no match, generate a generic response
       if (!responseText) {
         responseText = `Cảm ơn bạn đã hỏi về "${input}". Tôi có thể gợi ý một số thực đơn Eat Clean phù hợp với nhu cầu của bạn. Vui lòng cho tôi biết số người và số bữa bạn muốn chuẩn bị để tôi có thể gợi ý chi tiết hơn.`;
@@ -205,10 +313,10 @@ const Chatbot: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      
+
       <main className="flex-grow container mx-auto px-4 py-6">
         <h1 className="text-2xl font-bold mb-6">Chat với GreenFresh AI</h1>
-        
+
         <div className="bg-white rounded-lg shadow-sm overflow-hidden h-[calc(100vh-250px)] flex flex-col">
           {/* Chat messages */}
           <ScrollArea className="flex-grow p-4">
@@ -218,17 +326,15 @@ const Chatbot: React.FC = () => {
                 className={`mb-4 flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-3/4 rounded-lg p-3 ${
-                    message.sender === 'user'
-                      ? 'bg-greenfresh-600 text-white'
-                      : 'bg-gray-100 text-gray-800'
-                  }`}
+                  className={`max-w-3/4 rounded-lg p-3 ${message.sender === 'user'
+                    ? 'bg-greenfresh-600 text-white'
+                    : 'bg-gray-100 text-gray-800'
+                    }`}
                 >
                   <div className="whitespace-pre-wrap">{message.text}</div>
                   <div
-                    className={`text-xs mt-1 ${
-                      message.sender === 'user' ? 'text-greenfresh-100' : 'text-gray-500'
-                    }`}
+                    className={`text-xs mt-1 ${message.sender === 'user' ? 'text-greenfresh-100' : 'text-gray-500'
+                      }`}
                   >
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </div>
@@ -237,27 +343,30 @@ const Chatbot: React.FC = () => {
             ))}
             <div ref={messagesEndRef} />
           </ScrollArea>
-          
-          {/* Suggested prompts */}
-          <div className="p-4 border-t border-gray-200">
-            <div className="mb-2">
-              <span className="text-sm text-gray-500">Gợi ý:</span>
+
+          {/* Suggested prompts - hiện tạm ẩn */}
+          {false && (
+            <div className="p-4 border-t border-gray-200">
+              <div className="mb-2">
+                <span className="text-sm text-gray-500">Gợi ý:</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {suggestedPrompts.map((prompt, index) => (
+                  <Button
+                    key={index}
+                    variant="outline"
+                    size="sm"
+                    className="text-xs"
+                    onClick={() => handleSuggestedPrompt(prompt)}
+                  >
+                    {prompt}
+                  </Button>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {suggestedPrompts.map((prompt, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  size="sm"
-                  className="text-xs"
-                  onClick={() => handleSuggestedPrompt(prompt)}
-                >
-                  {prompt}
-                </Button>
-              ))}
-            </div>
-          </div>
-          
+          )}
+
+
           {/* Input area */}
           <div className="p-4 border-t border-gray-200 flex gap-2">
             <Input
@@ -277,7 +386,7 @@ const Chatbot: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <footer className="bg-greenfresh-800 text-white mt-12">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -285,7 +394,7 @@ const Chatbot: React.FC = () => {
               <h3 className="text-lg font-bold mb-4">GreenFresh</h3>
               <p className="text-greenfresh-200 mb-4">Rau sạch từ nông trại đến bàn ăn. Sản phẩm tươi mới mỗi ngày, đảm bảo chất lượng VietGAP.</p>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-bold mb-4">Thông tin</h3>
               <ul className="space-y-2 text-greenfresh-200">
@@ -295,7 +404,7 @@ const Chatbot: React.FC = () => {
                 <li>Chính sách bảo mật</li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-bold mb-4">Liên hệ</h3>
               <ul className="space-y-2 text-greenfresh-200">
@@ -305,7 +414,7 @@ const Chatbot: React.FC = () => {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-greenfresh-700 mt-8 pt-4 text-center text-greenfresh-300">
             <p>© 2023 GreenFresh. Tất cả các quyền được bảo lưu.</p>
           </div>

@@ -66,7 +66,7 @@ const Header: React.FC = () => {
               </Button>
             )}
             <Link to="/" className="text-2xl font-bold text-greenfresh-600">
-              GreenFresh
+              <img  src='/images/logo-removebg-preview.png' alt="Logo GreenFresh" width={85} />
             </Link>
           </div>
 
