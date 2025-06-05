@@ -432,7 +432,7 @@ const Chatbot: React.FC = () => {
           </div>
 
           <div className="border-t border-greenfresh-700 mt-8 pt-4 text-center text-greenfresh-300">
-            <p>© 2025 GreenFresh. Tất cả các quyền được bảo lưu.</p>
+            <p>© 2025 GreenFresh. Tất cả các quyền được bảo lưu by LPM</p>
           </div>
         </div>
       </footer>
