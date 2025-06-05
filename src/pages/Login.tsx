@@ -136,18 +136,18 @@ const Login = () => {
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t text-center text-xs text-gray-500">
+          {/* <div className="mt-6 pt-4 border-t text-center text-xs text-gray-500">
             <p>Thông tin đăng nhập demo:</p>
             <p className="mt-1">Admin: admin@greenfresh.vn / admin123</p>
             <p>User: user@gmail.com / user123</p>
-          </div>
+          </div> */}
         </div>
       </main>
 
       <footer className="bg-greenfresh-800 text-white mt-12">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center text-greenfresh-300">
-            <p>© 2023 GreenFresh. Tất cả các quyền được bảo lưu.</p>
+            <p>© 2025 GreenFresh. Tất cả các quyền được bảo lưu.</p>
           </div>
         </div>
       </footer>

@@ -451,7 +451,7 @@ const Checkout = () => {
       <footer className="bg-greenfresh-800 text-white mt-12">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center text-greenfresh-300">
-            <p>© 2023 GreenFresh. Tất cả các quyền được bảo lưu.</p>
+            <p>© 2025 GreenFresh. Tất cả các quyền được bảo lưu.</p>
           </div>
         </div>
       </footer>

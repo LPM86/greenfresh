@@ -366,15 +366,15 @@ const Cart: React.FC = () => {
             <div>
               <h3 className="text-lg font-bold mb-4">Liên hệ</h3>
               <ul className="space-y-2 text-greenfresh-200">
-                <li>Địa chỉ: 123 Đường ABC, Quận 1, TP HCM</li>
-                <li>Email: info@greenfresh.vn</li>
-                <li>Hotline: 1800-1234</li>
+                <li>Địa chỉ: Đại Học FPT Hà Nội </li>
+                <li>Email: greenfresh456@gmail.com</li>
+                <li>Hotline: 033 773 7190</li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-greenfresh-700 mt-8 pt-4 text-center text-greenfresh-300">
-            <p>© 2023 GreenFresh. Tất cả các quyền được bảo lưu.</p>
+            <p>© 2025 GreenFresh. Tất cả các quyền được bảo lưu.</p>
           </div>
         </div>
       </footer>

@@ -43,7 +43,7 @@ const botResponses: Record<string, string> = {
   "Combo đó gồm những loại rau gì": `Combo tuần này gồm khoảng 6–8 loại rau tươi theo mùa, ví dụ:
   * Cải ngọt, súp lơ xanh, cải bó xôi
   * Dưa leo, mướp hương, cà chua bi, rau dền đỏ
-Trọng lượng: 3.5–4kg, đủ cho 2 người ăn trong 3 ngày.`,
+`,
 
   "Rau này lấy từ đâu? Có đảm bảo sạch không": `Tất cả rau trong combo đều có nguồn gốc minh bạch.Canh tác theo quy trình không thuốc trừ sâu hóa học, không chất bảo quản, đảm bảo đạt chứng nhận VietGAP.
 `,
@@ -67,53 +67,69 @@ Ngày 2: Khoai lang, cà rốt, bầu sao ,Cải ngồng,Khoai tây , Cải chí
 Ngày 3: Xà lách lolo + dưa leo,rau ngót,Bí xanh,Cải bẹ trắng
 -----------------------------------------------------------------
 🔸 Ngày 1
-Bữa sáng
-*Khoai lang mật hấp
-*Trứng luộc
-*Dưa leo thái lát
+-Bữa sáng
+*Khoai lang mật hấp (300 g)
+*Trứng luộc 
+*Dưa leo thái lát (150 g)
 
-Bữa trưa
-*Cơm trắng
+-Bữa trưa
+*Cơm trắng 
 *Canh cải ngọt nấu thịt băm
-*Đỗ cove xào tỏi
+  +Cải ngọt (100 g)
+  +Thịt băm 
+*Đỗ cove xào tỏi (150 g đỗ cove)
 
-Bữa tối
-*Cơm trắng
-*Rau muống xào bò 
-*Cá chiên sả ớt
+-Bữa tối
+*Cơm trắng (không tính vào trọng lượng rau)
+*Rau muống xào bò (150 g rau muống)
+*Cá chiên sả ớt 
+
+Tổng rau ngày 1: 300 g (khoai lang) + 150 g (dưa leo) + 100 g (cải ngọt) + 150 g (đỗ cove) + 150 g (rau muống) = 850 g
 -----------------------------------------------------------------
-
 🔸 Ngày 2
 Bữa sáng
-*háo khoai lang cà rốt
-*Thịt gà xé phay
+*Cháo khoai lang cà rốt
+  +Khoai lang (200 g)
+  +Cà rốt (100 g)
+*Thịt gà xé phay 
 
 Bữa trưa
-*Cơm trắng
+*Cơm trắng 
 *Canh bầu sao nấu tôm tươi
-*Cải ngồng xào tỏi
-*Khoai tây luộc
+  +Bầu sao (200 g)
+  +Tôm tươi
+*Cải ngồng xào tỏi (100 g)
+*Khoai tây luộc (200 g)
 
 Bữa tối
-*Cơm trắng
-*Gà luộc chấm mắm gừng
-*Cải chíp xào thịt lợn
+*Cơm trắng 
+*Gà luộc chấm mắm gừng 
+*Cải chíp xào thịt lợn (100 g cải chíp)
+
+Tổng rau ngày 2: 200 g (khoai lang) + 100 g (cà rốt) + 200 g (bầu sao) + 100 g (cải ngồng) + 200 g (khoai tây) + 100 g (cải chíp) = 900 g
 -----------------------------------------------------------------
 🔸 Ngày 3
-*Bữa sáng
+Bữa sáng
 *Bánh mì ốp la
-*Xà lách lolo + dưa leo trộn dầu giấm
+  +Xà lách lolo + dưa leo trộn dầu giấm
+  +Xà lách lolo (100 g)
+  +Dưa leo (150 g)
 
 Bữa trưa
-*Cơm trắng
-*Canh rau ngót nấu sườn lợn 
-*Bí xanh xào thịt băm
+*Cơm trắng 
+*Canh rau ngót nấu sườn lợn
+  +Rau ngót (100 g)
+  +Sườn lợn (không tính vào trọng lượng rau)
+*Bí xanh xào thịt băm (150 g bí xanh)
 
 Bữa tối
-*Cơm trắng
-*Cải bẹ trắng xào
-*Tôm rim mặn ngọt
+*Cơm trắng 
+*Cải bẹ trắng xào (100 g cải bẹ trắng)
+*Tôm rim mặn ngọt 
 
+Tổng rau ngày 3: 100 g (xà lách) + 150 g (dưa leo) + 100 g (rau ngót) + 150 g (bí xanh) + 100 g (cải bẹ trắng) = 600 g
+
+🔸Tổng rau củ (3 ngày) = 850 g + 900 g + 600 g = 2 350 g
 `,
 
   "Mình đồng ý combo đó. Giao như thế nào": `Sau khi bạn xác nhận đặt hàng, Green Fresh sẽ giao hàng tận nơi trong vòng 24 giờ.Bạn vui lòng cung cấp:
@@ -315,7 +331,7 @@ const Chatbot: React.FC = () => {
       <Header />
 
       <main className="flex-grow container mx-auto px-4 py-6">
-        <h1 className="text-2xl font-bold mb-6">Chat với GreenFresh AI</h1>
+        <h1 className="text-2xl font-bold mb-6">Chat với GreenFresh </h1>
 
         <div className="bg-white rounded-lg shadow-sm overflow-hidden h-[calc(100vh-250px)] flex flex-col">
           {/* Chat messages */}
@@ -408,15 +424,15 @@ const Chatbot: React.FC = () => {
             <div>
               <h3 className="text-lg font-bold mb-4">Liên hệ</h3>
               <ul className="space-y-2 text-greenfresh-200">
-                <li>Địa chỉ: 123 Đường ABC, Quận 1, TP HCM</li>
-                <li>Email: info@greenfresh.vn</li>
-                <li>Hotline: 1800-1234</li>
+                <li>Địa chỉ: Đại Học FPT Hà NộiNội</li>
+                <li>Email: greenfresh456@gmail.com</li>
+                <li>Hotline: 033 773 7190</li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-greenfresh-700 mt-8 pt-4 text-center text-greenfresh-300">
-            <p>© 2023 GreenFresh. Tất cả các quyền được bảo lưu.</p>
+            <p>© 2025 GreenFresh. Tất cả các quyền được bảo lưu.</p>
           </div>
         </div>
       </footer>

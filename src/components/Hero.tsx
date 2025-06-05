@@ -23,7 +23,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    image: "https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-6/486226083_1089131296544887_7651220681822985335_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=0KjENoExm0IQ7kNvwE9Ueuf&_nc_oc=Adl713hTQ1PnnqnUHDDtZgUIMGVA0R2qDA6S30Xl5P8pw9hNsvwiu_u4ZfFC8TtTZD8&_nc_zt=23&_nc_ht=scontent.fhan14-5.fna&_nc_gid=zQrGUiRckIYkz9nT1MTWyg&oh=00_AfJLiR6RhEdcuNqwhUqOtEqBnIXvGuXAvBmQdMNlFhCdhw&oe=6835DAEC",
+    image: "/images/Raucuqu.jpg",
     title: "Combo tiện lợi",
     description: "Tiết kiệm thời gian với các combo đã được chuẩn bị sẵn",
     buttonText: "Xem combo",
@@ -31,9 +31,9 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    image: "https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/484688465_1085418613582822_997120347676150464_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=jWZyuMRZDeQQ7kNvwHx37nz&_nc_oc=AdlZH4q1QImzyDJMuSmOnWNgjt4Sq6xDGuDwnNtjEjdC141l4699CZ6bZw4W_zwB2AU&_nc_zt=23&_nc_ht=scontent.fhan14-2.fna&_nc_gid=Xzs9G_EFim2THa4K4LvqHw&oh=00_AfLPKIXaiWK5iuTvxFKSPtBXFMernnQQ_lEprc63oVSWbg&oe=6835B413",
-    title: "Deal Hot",
-    description: "Giảm giá lên đến 30% cho các sản phẩm mùa hè",
+    image: "/images/tuoingon.jpg",
+    title: "Fresh mỗi ngày",
+    description: "Đảm bảo rau củ quả luôn tươi ngon, an toàn cho sức khỏe",
     buttonText: "Xem ưu đãi",
     link: "/products"
   }
