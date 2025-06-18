@@ -127,7 +127,7 @@ const products: Record<number, Product & { description: string; origin: string; 
 
   201: {
     id: 201,
-    name: "Combo thực đơn 3 ngày cho 3 người ăn chay",
+    name: "Combo thực đơn 3 ngày cho 2 người",
     image: "/images/combo.jpg",
     price: 180000,
     unit: "combo",
