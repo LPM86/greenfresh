@@ -139,9 +139,9 @@ isHot: true,
 const popularProducts: Product[] = [
   {
     id: 201,
-    name: "Combo thực đơn 3 ngày cho 3 người ăn chay",
+    name: "Combo thực đơn 3 ngày cho 2 người",
     image: "/images/combo.jpg",
-    price: 180000,
+    price: 110000,
     unit: "combo",
     isHot: true
   },
