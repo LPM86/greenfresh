@@ -129,7 +129,7 @@ const products: Record<number, Product & { description: string; origin: string; 
     id: 201,
     name: "Combo thực đơn 3 ngày cho 2 người",
     image: "/images/combo.jpg",
-    price: 180000,
+    price: 110000,
     unit: "combo",
     isOrganic: true,
     description: "Liên hệ trực tiếp qua sđt: 0922407746 để được tư vấn chi tiết combo rau của bạn",
