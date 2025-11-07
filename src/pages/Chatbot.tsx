@@ -26,48 +26,107 @@ const suggestedPrompts = [
   "Mình muốn có:các loại rau xanh, củ và tinh bột",
   "Mình đồng ý combo đó. Giao như thế nào",
   "Nguyễn Thị Ngọc, Số 7 ngách 30 ngõ 68 Xuân Thủy Cầu Giấy, 0922407744",
-  "Gợi ý thực đơn bữa tối tốt cho sức khỏe cho 1 người.",
+  "Gợi ý thực đơn bữa tối tốt cho sức khỏe cho 1 người",
+  "gợi ý thực đơn bữa tối tốt cho sức khỏe cho 1 người",
+
 
 
 ];
 
 const botResponses: Record<string, string> = {
 
-"Gợi ý thực đơn bữa tối tốt cho sức khỏe cho 1 người.": `🍽️ Gợi ý Thực đơn Bữa tối Healthy Cho 1 Người trong 1 tuần
+"Gợi ý thực đơn bữa tối tốt cho sức khỏe cho 1 người": `🍽️ Gợi ý Thực đơn Bữa tối Healthy Cho 1 Người trong 1 tuần
 Đây là 7 ý tưởng bữa tối cân bằng, tập trung vào đạm nạc, rau củ và tinh bột phức hợp với cách chế biến lành mạnh (luộc, hấp, áp chảo ít dầu).
+
 Thứ Hai: Bữa tối Protein & Chất xơ
-Món Chính: Ức gà áp chảo (dùng rất ít dầu ô liu) hoặc Ức gà luộc xé phay.
-Món Kèm: Salad hỗn hợp (xà lách, rau mầm, cà chua bi, dưa chuột) trộn sốt nhẹ (chanh, dầu ô liu, tiêu).
-Lưu ý: Không cần thêm tinh bột.
+ *Món Chính: Ức gà áp chảo (dùng rất ít dầu ô liu) hoặc Ức gà luộc xé phay.
+ *Món Kèm: Salad hỗn hợp (xà lách, rau mầm, cà chua bi, dưa chuột) trộn sốt nhẹ (chanh, dầu ô liu, tiêu).
+ *Lưu ý: Không cần thêm tinh bột.
+
 Thứ Ba: Bữa tối Cá và Omega-3
-Món Chính: Cá hồi nướng hoặc áp chảo bằng giấy bạc (khoảng 100g).
-Món Kèm: Bông cải xanh và Măng tây hấp hoặc luộc.
-Lưu ý: Cá hồi cung cấp chất béo tốt (Omega-3) rất quan trọng cho sức khỏe.
+ *Món Chính: Cá hồi nướng hoặc áp chảo bằng giấy bạc (khoảng 100g).
+ *Món Kèm: Bông cải xanh và Măng tây hấp hoặc luộc.
+ *Lưu ý: Cá hồi cung cấp chất béo tốt (Omega-3) rất quan trọng cho sức khỏe.
+
 Thứ Tư: Bữa tối Gạo Lứt Cân bằng
-Món Chính: Một chén nhỏ cơm gạo lứt (khoảng 50g gạo khô).
-Món Kèm: Trứng cuộn (1 quả trứng) và một đĩa rau cải thảo hoặc cải ngọt luộc.
-Lưu ý: Giảm lượng cơm so với bữa trưa.
+ *Món Chính: Một chén nhỏ cơm gạo lứt (khoảng 50g gạo khô).
+ *Món Kèm: Trứng cuộn (1 quả trứng) và một đĩa rau cải thảo hoặc cải ngọt luộc.
+ *Lưu ý: Giảm lượng cơm so với bữa trưa.
+
 Thứ Năm: Bữa tối Khoai Lang và Đạm Nạc
-Món Chính: Khoai lang luộc hoặc nướng (1-2 củ nhỏ).
-Món Kèm: Thịt thăn lợn nạc luộc/hấp (khoảng 80g) chấm mắm gừng nhạt.
-Lưu ý: Khoai lang là tinh bột phức hợp giúp no lâu và dễ tiêu hóa vào buổi tối.
+ *Món Chính: Khoai lang luộc hoặc nướng (1-2 củ nhỏ).
+ *Món Kèm: Thịt thăn lợn nạc luộc/hấp (khoảng 80g) chấm mắm gừng nhạt.
+ *Lưu ý: Khoai lang là tinh bột phức hợp giúp no lâu và dễ tiêu hóa vào buổi tối.
+
 Thứ Sáu: Bữa tối Nhẹ bụng với Hải sản
-Món Chính: Tôm hấp hoặc luộc (khoảng 100g).
-Món Kèm: Bát cháo yến mạch mặn nấu cùng nấm hương và hành lá (không dùng dầu mỡ).
-Lưu ý: Món này giúp hệ tiêu hóa làm việc nhẹ nhàng trước khi ngủ.
+ *Món Chính: Tôm hấp hoặc luộc (khoảng 100g).
+ *Món Kèm: Bát cháo yến mạch mặn nấu cùng nấm hương và hành lá (không dùng dầu mỡ).
+ *Lưu ý: Món này giúp hệ tiêu hóa làm việc nhẹ nhàng trước khi ngủ.
+
 Thứ Bảy: Bữa tối Thực vật Thanh đạm
-Món Chính: Đậu phụ sốt cà chua hoặc Đậu phụ kho nấm (chế biến nhạt).
-Món Kèm: Một bát canh bí đỏ hoặc canh bí đao nấu với ít thịt băm nạc (hoặc hoàn toàn chay).
-Lưu ý: Tập trung vào protein thực vật.
+ *Món Chính: Đậu phụ sốt cà chua hoặc Đậu phụ kho nấm (chế biến nhạt).
+ *Món Kèm: Một bát canh bí đỏ hoặc canh bí đao nấu với ít thịt băm nạc (hoặc hoàn toàn chay).
+ *Lưu ý: Tập trung vào protein thực vật.
+
 Chủ Nhật: Bữa tối Tổng hợp
-Món Chính: Trứng luộc (1 quả) và ½ quả bơ ăn kèm một ít hạt óc chó/hạnh nhân.
-Món Kèm: Salad đậu đen hoặc đậu gà trộn với dưa chuột và ớt chuông.
-Lưu ý: Cung cấp chất béo tốt, đạm và chất xơ.
+ *Món Chính: Trứng luộc (1 quả) và ½ quả bơ ăn kèm một ít hạt óc chó/hạnh nhân.
+ *Món Kèm: Salad đậu đen hoặc đậu gà trộn với dưa chuột và ớt chuông.
+ *Lưu ý: Cung cấp chất béo tốt, đạm và chất xơ.
+
 📝 Nguyên Tắc Chung
-Chế biến: Luôn ưu tiên luộc, hấp, nướng, áp chảo với dầu ô liu/dầu hạt cải.
-Thời gian ăn: Ăn tối trước khi ngủ ít nhất 2-3 tiếng.
-Đồ uống: Uống nước lọc, trà thảo mộc không đường.
+ 1.Chế biến: Luôn ưu tiên luộc, hấp, nướng, áp chảo với dầu ô liu/dầu hạt cải.
+ 2.Thời gian ăn: Ăn tối trước khi ngủ ít nhất 2-3 tiếng.
+ 3.Đồ uống: Uống nước lọc, trà thảo mộc không đường.
 Nếu bạn cần tôi tìm kiếm công thức chi tiết cho bất kỳ món nào trong danh sách này, hãy cho tôi biết nhé!`,
+
+
+
+"gợi ý thực đơn bữa tối tốt cho sức khỏe cho 1 người": `🍽️ Gợi ý Thực đơn Bữa tối Healthy Cho 1 Người trong 1 tuần
+Đây là 7 ý tưởng bữa tối cân bằng, tập trung vào đạm nạc, rau củ và tinh bột phức hợp với cách chế biến lành mạnh (luộc, hấp, áp chảo ít dầu).
+
+Thứ Hai: Bữa tối Protein & Chất xơ
+ *Món Chính: Ức gà áp chảo (dùng rất ít dầu ô liu) hoặc Ức gà luộc xé phay.
+ *Món Kèm: Salad hỗn hợp (xà lách, rau mầm, cà chua bi, dưa chuột) trộn sốt nhẹ (chanh, dầu ô liu, tiêu).
+ *Lưu ý: Không cần thêm tinh bột.
+
+Thứ Ba: Bữa tối Cá và Omega-3
+ *Món Chính: Cá hồi nướng hoặc áp chảo bằng giấy bạc (khoảng 100g).
+ *Món Kèm: Bông cải xanh và Măng tây hấp hoặc luộc.
+ *Lưu ý: Cá hồi cung cấp chất béo tốt (Omega-3) rất quan trọng cho sức khỏe.
+
+Thứ Tư: Bữa tối Gạo Lứt Cân bằng
+ *Món Chính: Một chén nhỏ cơm gạo lứt (khoảng 50g gạo khô).
+ *Món Kèm: Trứng cuộn (1 quả trứng) và một đĩa rau cải thảo hoặc cải ngọt luộc.
+ *Lưu ý: Giảm lượng cơm so với bữa trưa.
+
+Thứ Năm: Bữa tối Khoai Lang và Đạm Nạc
+ *Món Chính: Khoai lang luộc hoặc nướng (1-2 củ nhỏ).
+ *Món Kèm: Thịt thăn lợn nạc luộc/hấp (khoảng 80g) chấm mắm gừng nhạt.
+ *Lưu ý: Khoai lang là tinh bột phức hợp giúp no lâu và dễ tiêu hóa vào buổi tối.
+
+Thứ Sáu: Bữa tối Nhẹ bụng với Hải sản
+ *Món Chính: Tôm hấp hoặc luộc (khoảng 100g).
+ *Món Kèm: Bát cháo yến mạch mặn nấu cùng nấm hương và hành lá (không dùng dầu mỡ).
+ *Lưu ý: Món này giúp hệ tiêu hóa làm việc nhẹ nhàng trước khi ngủ.
+
+Thứ Bảy: Bữa tối Thực vật Thanh đạm
+ *Món Chính: Đậu phụ sốt cà chua hoặc Đậu phụ kho nấm (chế biến nhạt).
+ *Món Kèm: Một bát canh bí đỏ hoặc canh bí đao nấu với ít thịt băm nạc (hoặc hoàn toàn chay).
+ *Lưu ý: Tập trung vào protein thực vật.
+
+Chủ Nhật: Bữa tối Tổng hợp
+ *Món Chính: Trứng luộc (1 quả) và ½ quả bơ ăn kèm một ít hạt óc chó/hạnh nhân.
+ *Món Kèm: Salad đậu đen hoặc đậu gà trộn với dưa chuột và ớt chuông.
+ *Lưu ý: Cung cấp chất béo tốt, đạm và chất xơ.
+
+📝 Nguyên Tắc Chung
+ 1.Chế biến: Luôn ưu tiên luộc, hấp, nướng, áp chảo với dầu ô liu/dầu hạt cải.
+ 2.Thời gian ăn: Ăn tối trước khi ngủ ít nhất 2-3 tiếng.
+ 3.Đồ uống: Uống nước lọc, trà thảo mộc không đường.
+Nếu bạn cần tôi tìm kiếm công thức chi tiết cho bất kỳ món nào trong danh sách này, hãy cho tôi biết nhé!
+`,
+
+
 
 
   "Mình muốn mua rau sạch cho 2 người ăn trong 3 ngày thì bên bạn có gói nào phù hợp không?": `Chào bạn 👋 Green Fresh hiện có Combo Rau Sạch 3 Ngày dành cho 2 người, 
