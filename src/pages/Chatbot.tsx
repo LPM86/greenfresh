@@ -42,44 +42,43 @@ const botResponses: Record<string, string> = {
 
 "hello":`Chào bạn! Tôi là một trợ lý AI. Tôi có thể giúp gì cho bạn hôm nay?
 
-Bạn vừa xem qua các gợi ý về thực đơn bữa tối tốt cho sức khỏe. Bạn có muốn tôi:
+Bạn có muốn tôi:
 
-Tìm kiếm công thức chi tiết cho một món ăn cụ thể trong thực đơn đó không?
+- Tìm kiếm công thức chi tiết cho một món ăn cụ thể trong thực đơn đó không?
 
-Gợi ý thêm các bữa ăn healthy khác?
+- Gợi ý thêm các bữa ăn healthy khác?
 
-Hỗ trợ bạn về chủ đề khác?`,
+- Hỗ trợ bạn về chủ đề khác?`,
 
 "Hello":`Chào bạn! Tôi là một trợ lý AI. Tôi có thể giúp gì cho bạn hôm nay?
 
-Bạn vừa xem qua các gợi ý về thực đơn bữa tối tốt cho sức khỏe. Bạn có muốn tôi:
+Bạn có muốn tôi:
 
-Tìm kiếm công thức chi tiết cho một món ăn cụ thể trong thực đơn đó không?
+- Tìm kiếm công thức chi tiết cho một món ăn cụ thể trong thực đơn đó không?
 
-Gợi ý thêm các bữa ăn healthy khác?
+- Gợi ý thêm các bữa ăn healthy khác?
 
-Hỗ trợ bạn về chủ đề khác?`,
+- Hỗ trợ bạn về chủ đề khác?`,
 
 "Xin chào":`Chào bạn! Tôi là một trợ lý AI. Tôi có thể giúp gì cho bạn hôm nay?
 
-Bạn vừa xem qua các gợi ý về thực đơn bữa tối tốt cho sức khỏe. Bạn có muốn tôi:
+Bạn có muốn tôi:
 
-Tìm kiếm công thức chi tiết cho một món ăn cụ thể trong thực đơn đó không?
+- Tìm kiếm công thức chi tiết cho một món ăn cụ thể trong thực đơn đó không?
 
-Gợi ý thêm các bữa ăn healthy khác?
+- Gợi ý thêm các bữa ăn healthy khác?
 
-Hỗ trợ bạn về chủ đề khác?`,
+- Hỗ trợ bạn về chủ đề khác?`,
 
 "xin chào":`Chào bạn! Tôi là một trợ lý AI. Tôi có thể giúp gì cho bạn hôm nay?
 
-Bạn vừa xem qua các gợi ý về thực đơn bữa tối tốt cho sức khỏe. Bạn có muốn tôi:
+Bạn có muốn tôi:
 
-Tìm kiếm công thức chi tiết cho một món ăn cụ thể trong thực đơn đó không?
+- Tìm kiếm công thức chi tiết cho một món ăn cụ thể trong thực đơn đó không?
 
-Gợi ý thêm các bữa ăn healthy khác?
+- Gợi ý thêm các bữa ăn healthy khác?
 
-Hỗ trợ bạn về chủ đề khác?`,
-
+- Hỗ trợ bạn về chủ đề khác?`,
 
 "Gợi ý thực đơn bữa tối tốt cho sức khỏe cho 1 người": `🍽️ Gợi ý Thực đơn Bữa tối Healthy Cho 1 Người trong 1 tuần
 Đây là 7 ý tưởng bữa tối cân bằng, tập trung vào đạm nạc, rau củ và tinh bột phức hợp với cách chế biến lành mạnh (luộc, hấp, áp chảo ít dầu).
