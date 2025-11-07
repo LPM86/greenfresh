@@ -14,10 +14,11 @@ interface Message {
 }
 
 const suggestedPrompts = [
-  // "Gợi ý thực đơn eat clean cho gia đình 4 người",
-  // "Thực đơn 3 bữa cho 2 người trong 1 tuần",
-  // "Gợi ý nấu ăn với cà rốt và bông cải xanh",
-  // "Làm salad với rau củ theo mùa",
+  "Gợi ý thực đơn eat clean cho gia đình 4 người",
+  "gợi ý thực đơn eat clean cho gia đình 4 người",
+  "Thực đơn 3 bữa cho 2 người trong 1 tuần",
+  "Gợi ý nấu ăn với cà rốt và bông cải xanh",
+  "Làm salad với rau củ theo mùa",
   "Mình muốn mua rau sạch cho 2 người ăn trong 3 ngày thì bên bạn có gói nào phù hợp không?",
   "Mình muốn mua rau sạch cho 2 người ăn trong 3 ngày thì bên bạn có gói nào phù hợp không",
   "Combo đó gồm những loại rau gì",
@@ -258,6 +259,26 @@ Tổng rau ngày 3: 100 g (xà lách) + 150 g (dưa leo) + 100 g (rau ngót) + 1
 - Bữa tối: Bò xào với bông cải xanh và cơm gạo lứt
 
 Bạn có thể mua tất cả nguyên liệu tươi sạch từ GreenFresh để đảm bảo chất lượng tốt nhất cho gia đình.`,
+
+ "gợi ý thực đơn eat clean cho gia đình 4 người": `Dưới đây là thực đơn Eat Clean cho gia đình 4 người trong 3 ngày:
+
+**Ngày 1:**
+- Bữa sáng: Sinh tố rau bina, chuối và yến mạch
+- Bữa trưa: Salad gà nướng với rau xà lách, cà chua và dầu olive
+- Bữa tối: Cá hồi nướng với măng tây và khoai lang
+
+**Ngày 2:**
+- Bữa sáng: Bánh mì nguyên cám với trứng luộc và bơ
+- Bữa trưa: Bún trộn rau củ với đậu phụ
+- Bữa tối: Gà nướng với rau củ theo mùa và quinoa
+
+**Ngày 3:**
+- Bữa sáng: Cháo yến mạch với hạt óc chó và táo
+- Bữa trưa: Soup bí đỏ với bánh mì nguyên cám
+- Bữa tối: Bò xào với bông cải xanh và cơm gạo lứt
+
+Bạn có thể mua tất cả nguyên liệu tươi sạch từ GreenFresh để đảm bảo chất lượng tốt nhất cho gia đình.`,
+
 
   "Thực đơn 3 bữa cho 2 người trong 1 tuần": `Đây là thực đơn 3 bữa cho 2 người trong 1 tuần với nguyên liệu từ GreenFresh:
 
